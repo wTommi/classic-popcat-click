@@ -42,7 +42,7 @@
       }
 
       #op {
-        background-image: url("imgs/p.png");
+        background-image: url("imgs/op.png");
         background-position: bottom;
         background-size: contain;
         background-repeat: no-repeat;
@@ -55,4 +55,32 @@
       <div class="cat-img" id="p">0</div>
     </div>
   </body>
+  <script>
+    let preview = new Image();
+    preview.src = "imgs/op.png";
+
+    let count = 0;
+    const catImg = document.getElementById("p");
+    const pop_sound = new Audio("pops/pop1.mp3");
+
+    function addCount() {
+      count++;
+    }
+
+    function handleInteraction() {
+      count++;
+      catImg.innerText = count;
+      catImg.id = "op";
+      pop_sound.play();
+    }
+
+    function recoverImg() {
+      catImg.id = "p";
+    }
+
+    document.addEventListener("mousedown", handleInteraction);
+    document.addEventListener("keydown", handleInteraction);
+    document.addEventListener("mouseup", recoverImg());
+    document.addEventListener("keyup", recoverImg());
+  </script>
 </html>
